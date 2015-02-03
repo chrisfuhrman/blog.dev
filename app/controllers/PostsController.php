@@ -1,6 +1,6 @@
 <?php
 
-class PostsController extends \BaseController {
+class PostsController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,8 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return 'navigate to blog.dev/posts and shows a list of all the posts';
+		$posts = Post::paginate(4);
+		return View::make('posts.index')->with('posts', $posts);
 	}
 
 
@@ -20,7 +21,7 @@ class PostsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return 'navigate to blog.dev/posts/create and Show a form for creating a post';
+		return View::make('posts.create');
 	}
 
 
@@ -31,7 +32,8 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$post = new Post();
+		return $this->savePost($post);
 	}
 
 
@@ -43,7 +45,7 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return "navigate to blog.dev/posts/{{$id}} and show a specific post";
+		
 	}
 
 
@@ -55,7 +57,8 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return 'navigate to blog.dev/posts/{id}/edit and show a form for editing a specific post';
+		$post = Post::findOrFail($id);
+		return View::make('posts.edit')->with('post', $post);
 	}
 
 
@@ -67,7 +70,8 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$post = Post::findOrFail($id);
+		return $this->savePost($post);
 	}
 
 
@@ -80,6 +84,25 @@ class PostsController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	protected function savePost($post)
+	{
+		$validator = validator::make(Input::all(), Post::$rules)
+		
+		if ($validator->fails()) {
+			Session::flash('errorMessage', 'Failed to save your post!');
+			
+			return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+			$post->title = Input::get('title');
+			$post->body = Input::get('body');
+			
+			$post->save();
+
+			return Redirect::action('PostsController@show', $post->id);
+		}
+
 	}
 
 

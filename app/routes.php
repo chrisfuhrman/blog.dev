@@ -15,4 +15,12 @@ Route::get('/', 'HomeController@showHome');
 Route::get('/resume', 'HomeController@showResume');
 Route::get('/portfolio', 'HomeController@showPortfolio');
 
+
+
 Route::resource('posts', 'PostsController');
+// Route::resource('create', 'PostsController');
+
+// $users = User::where('username')
+// User::all();
+// User::find(1);
+// Hash::make('testPassword');

@@ -42,7 +42,17 @@ text {
 
     <div id="container-main">
     	<div class="container">
+
+			@if (Session::has('errorMessage'))
+			    <div class="alert alert-danger">{{{ Session::get('successMessage') }}}</div>
+			@endif
+
+			@if (Session::has('successMessage'))
+    			<div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+			@endif
+
     		@yield('content')	
+
     	</div>
 	</div>
 
