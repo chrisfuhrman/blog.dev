@@ -18,7 +18,32 @@ Route::get('/portfolio', 'HomeController@showPortfolio');
 
 
 Route::resource('posts', 'PostsController');
-// Route::resource('create', 'PostsController');
+
+// Authentication Routes
+Route::get('login', 'AuthController@showLogin');
+Route::post('login', 'AuthController@doLogin');
+Route::get('logout', 'AuthController@doLogout');
+
+Route::get('search', function() {
+
+	$search = Input::get('search');
+
+	$query = Post::with('user')->where('title', 'like', '%' . $search . '%');
+
+	// $query->orWhereHas('user', function($q) {
+	// 	$search = Input::get('search');
+
+	// 	$q->where('email', 'like', '%' . $search . '%');
+	// });
+
+	$posts = $query->orderBy('created_at')->paginate(4);
+
+	foreach ($posts as $post) {
+		var_dump($post);
+	}
+
+});
+
 
 // $users = User::where('username')
 // User::all();

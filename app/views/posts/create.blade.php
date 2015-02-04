@@ -4,10 +4,10 @@
 
 
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-md-6 col-md-offset-3">
 			{{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-group', 'id' => 'blog-form')) }}
 
-				<h2 class="addPersonHeader">New Blog Post</h2>
+				<h2 class="addPersonHeader">Create Post</h2>
 
 				@include('posts.form')
 

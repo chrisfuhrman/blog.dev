@@ -5,7 +5,7 @@
 	<title>Chris Fuhrman's Blog</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/assets/css/main.css">
-
+	<script src="https://apis.google.com/js/client:platform.js" async defer></script>
 </head>
 
 <style>
@@ -14,37 +14,14 @@ text {
 }
 </style>
 <body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- <a class="navbar-brand" href="#">Logo</a> -->
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="/">Blog</a></li>
-                    <li><a href="/resume">Resume</a></li>
-                    <li><a href="/portfolio">Projects</a></li>
-                    <li><a href="#">Contact Me</a></li>
-                </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- <li><a href="login.html">Client Login</a></li> -->
-                    </ul>
-            </div>
-        </div>
-    </nav> 
+
+    @include('partials.navbar')
 
     <div id="container-main">
     	<div class="container">
 
 			@if (Session::has('errorMessage'))
-			    <div class="alert alert-danger">{{{ Session::get('successMessage') }}}</div>
+			    <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
 			@endif
 
 			@if (Session::has('successMessage'))
@@ -56,66 +33,49 @@ text {
     	</div>
 	</div>
 
+	<!-- Main Footer -->
+	<section id="footer-main">
+		<div class="container">
+			<div class="row">
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
+				<div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+					<h4 class="footer-header">Header 1</h4>
 
-<script src="/assets/js/flare.js"></script>
+				</div>
+
+				<div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+					<h4>Header 2</h4>
+
+				</div>
+
+				<div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+					<h4>Header 3</h4>
+
+				</div>
+
+				<div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+					<h4>Header 4</h4>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <script>
-
-	var diameter = 960,
-	    format = d3.format(",d"),
-	    color = d3.scale.category20c();
-
-	var bubble = d3.layout.pack()
-	    .sort(null)
-	    .size([diameter, diameter])
-	    .padding(1.5);
-
-	var svg = d3.select("body").append("svg")
-	    .attr("width", diameter)
-	    .attr("height", diameter)
-	    .attr("class", "bubble");
-
-	d3.json("/assets/js/flare.js", function(error, root) {
-	  var node = svg.selectAll(".node")
-	      .data(bubble.nodes(classes(root))
-	      .filter(function(d) { return !d.children; }))
-	    .enter().append("g")
-	      .attr("class", "node")
-	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-	  node.append("title")
-	      .text(function(d) { return d.className + ": " + format(d.value); });
-
-	  node.append("circle")
-	      .attr("r", function(d) { return d.r; })
-	      .style("fill", function(d) { return color(d.packageName); });
-
-	  node.append("text")
-	      .attr("dy", ".3em")
-	      .style("text-anchor", "middle")
-	      .text(function(d) { return d.className.substring(0, d.r / 3); });
-	});
-
-	// Returns a flattened hierarchy containing all leaf nodes under the root.
-	function classes(root) {
-	  var classes = [];
-
-	  function recurse(name, node) {
-	    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-	    else classes.push({packageName: name, className: node.name, value: node.size});
-	  }
-
-	  recurse(null, root);
-	  return {children: classes};
-	}
-
-	d3.select(self.frameElement).style("height", diameter + "px");
+(function() {
+	//Handles menu drop down
+    $('.dropdown-menu').find('form').click(function (e) {
+        e.stopPropagation();
+    });
+})();
 
 </script>
-
-	
 
 
 </body>

@@ -67,6 +67,17 @@ App::down(function()
 	return Response::make("Be right back!", 503);
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Custom 404 Error
+|--------------------------------------------------------------------------
+*/
+App::missing(function($exception)
+{
+    return Response::view('errors.missing', array(), 404);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File
