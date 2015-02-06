@@ -19,7 +19,10 @@ class PostTableSeeder extends Seeder
 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
+	        $post->user_id = $user->id;
 	        $post->save();
+
+
 		}
 	}
 
