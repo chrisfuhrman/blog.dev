@@ -4,14 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Chris Fuhrman's Blog</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/css/main.css">
+	<!-- Google Oauth -->
 	<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+
 </head>
 
 <style>
-text {
-  font: 10px sans-serif;
-}
+
 </style>
 <body>
 
@@ -33,34 +34,7 @@ text {
     	</div>
 	</div>
 
-	<!-- Main Footer -->
-	<section id="footer-main">
-		<div class="container">
-			<div class="row">
 
-				<div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-					<h4 class="footer-header">Header 1</h4>
-
-				</div>
-
-				<div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-					<h4>Header 2</h4>
-
-				</div>
-
-				<div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-					<h4>Header 3</h4>
-
-				</div>
-
-				<div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-					<h4>Header 4</h4>
-
-				</div>
-
-			</div>
-		</div>
-	</section>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -68,14 +42,35 @@ text {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <script>
+
 (function() {
 	//Handles menu drop down
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation();
     });
+
+	// Change google sign in btn on hover
+
+	var img = $('#google-login');
+
+	img.on('mouseenter', function() {
+		$(this).hide()
+			$('#google-login-hover').show();
+
+	});
+	
+	$('#google-login-hover').on('mouseout', function() {
+		$(this).hide()
+			img.show();
+	});
+
+		
 })();
 
+	
 </script>
+
+
 
 
 </body>

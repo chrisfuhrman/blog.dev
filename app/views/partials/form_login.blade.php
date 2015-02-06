@@ -9,8 +9,8 @@
 		{{Form::label('') }}
 		{{Form::password('password', ['class' => 'form-control', 'placeholder' => 'password']) }}
 	</div>
-	<div class="form-group">
-		{{Form::submit('Log In', ['class' => 'btn btn-primary'])}}
+	<div class="form-group centered">
+		{{Form::submit('Sign In', ['class' => 'btn btn-primary'])}}
 	</div>
 
 	

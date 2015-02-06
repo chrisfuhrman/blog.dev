@@ -23,6 +23,10 @@ Route::resource('posts', 'PostsController');
 Route::get('login', 'AuthController@showLogin');
 Route::post('login', 'AuthController@doLogin');
 Route::get('logout', 'AuthController@doLogout');
+// OAuth Routes
+Route::get('auth/google', 'AuthController@loginWithGoogle');
+Route::get('auth/linkedin', 'AuthController@loginWithLinkedin');
+
 
 Route::get('search', function() {
 

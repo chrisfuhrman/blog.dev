@@ -25,32 +25,23 @@
   Navbar
   ========================================
 */
-/*changes the height of the navbar*/
-.navbar-brand,
-.navbar-nav li a {
-    line-height: 60px;
-    height: 90px;
-}
 
 .navbar {
 	margin-bottom: -20px;
 }
+/*changes the height of the navbar*/
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 60px;
+    /*height: 90px;*/
+}
+
+
 
 /*changes the navbar background color */
 .navbar-default {
 	background-color: rgba(62, 169, 245, 1);
 	border-color: rgba(62, 169, 245, 1);
-}
-.navbar-default .navbar-brand {
-	color: #58f9bf;
-
-}
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-	color: #58f9bf;
-}
-.navbar-default .navbar-text {
-	color: #f9fdff;
-
 }
 /*changes navbar link colors*/
 .navbar-default .navbar-nav > li > a {
@@ -63,10 +54,6 @@
 /*changes navbar hover color*/
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
 	color: #fff;
-}
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-	color: #58f9bf;
-	background-color: #5daafa;
 }
 /*changes color of navbar dropdown link when clicked
 or background color for dropdown when active*/
@@ -84,6 +71,11 @@ or background color for dropdown when active*/
 	background-color: #f9fdff;
 }
 /* BEGIN NAVBAR RIGHT */
+
+#right-dropdown {
+	position: ;
+	margin-right: 10px;
+}
 
 
 
@@ -113,6 +105,32 @@ or background color for dropdown when active*/
 }
 
 
+#logged-user {
+	display: block;
+	color: #fff;
+	margin: -30px 0 -30px;
+
+}
+#sign-out {
+	margin-left: 5px;
+}
+/*right hand drop down menu*/
+.dropdown-menu {
+	padding: 15px;
+	/*border: 2px solid red;*/
+	border-radius: 100px;
+}
+
+#login-or {
+	display: block;
+	text-align: center;
+	font-size: 1.5em;
+}
+#google-login-hover {
+	display: none;
+}
+
+
 /*
   ========================================
   Main Section
@@ -120,7 +138,7 @@ or background color for dropdown when active*/
 */
 
 #container-main {
-	padding-top: 10px;
+	padding-top: 25px;
 }
 
 
@@ -167,6 +185,9 @@ or background color for dropdown when active*/
     text-align:center;
 }
 
+.clear-fix {
+	clear: both;
+}
 
 
 h1,
